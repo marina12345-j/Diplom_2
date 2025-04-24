@@ -12,7 +12,8 @@ class TestUserUpdate:
         'name': generate_random_username()
     }
 
-    @allure.title('Проверка ответа на запрос изменения данных аутентифицированного пользователя')
+    @allure.title('Проверка ответа на запрос изменения данных пользователя')
+    @allure.step('Изменение данных: пользователь зарегистрирован')
     def test_update_user_authenticated_success(self, new_user_creature_and_delete):
         response = requests.patch(Urls.user_update, headers={
             'Authorization': new_user_creature_and_delete[1]['accessToken']}, data=TestUserUpdate.updated_user_data)
@@ -22,7 +23,7 @@ class TestUserUpdate:
         assert deserials['user']['email'] == TestUserUpdate.updated_user_data['email']
         assert deserials['user']['name'] == TestUserUpdate.updated_user_data['name']
 
-    @allure.title('Проверка ответа на запрос изменения данных неаутентифицированного пользователя')
+    @allure.step('Изменение данных: пользователь не зарегистрирован')
     def test_update_user_unauthenticated_expected_error(self):
         response = requests.patch(Urls.user_update, headers=Urls.headers, data=TestUserUpdate.updated_user_data)
         assert response.status_code == 401 and response.json() == {'success': False,

@@ -2,11 +2,20 @@ from helpers import *
 
 
 class UsersData:
-    email = 'jmailova_praktikum_2025@ya.ru'
-    password = 'brains'
-    username = 'Marina'
+     email = 'jmailova_praktikum_2025@ya.ru'
+     password = 'brains'
+     username = 'Marina'
 
-    credentials_with_empty_field = [
+     email_password_only = [
+        {'email': generate_random_email(),
+         'password': 'brains'
+         },
+        {'email': 'jmailova_praktikum_2025@ya.ru',
+         'password': generate_random_password()
+         }
+         ]
+
+     credentials_with_empty_field = [
         {'email': '',
          'password': generate_random_password(),
          'name': generate_random_username()
