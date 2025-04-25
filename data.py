@@ -1,5 +1,24 @@
 from helpers import *
 
+# Авторизация текст ответов сервера на запросы
+negative_authentication_text = {"success": False, "message": "email or password are incorrect"}
+
+# Получение списка заказов
+negative_order_list = {'success': False, 'message': 'You should be authorised'}
+
+# Регистрация пользователя
+#not_filled =  {'success': False, 'message': 'Email, password and name are required fields'}
+no_email = {'success': False, 'message': 'User already exists'}
+
+
+# Создание заказа текст ответов сервера на запросы
+class CreateOrder:
+    user_not_logged = {'success': False, 'message': 'Email, password and name are required fields'}
+    ingredient_must_be_provided = {'success': False, 'message': 'Ingredient ids must be provided'}
+    hech_ingredient = {'Internal Server Error'}
+
+
+
 
 class UsersData:
      email = 'jmailova_praktikum_2025@ya.ru'
